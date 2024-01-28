@@ -1,0 +1,57 @@
+<div class="backgroundGoat">
+    <div class="centered-div">
+        <mat-card fxFlex="30" class="login-form">
+          <img src="assets/ProbumLogoTemp.svg" alt="erro">
+          <br>
+      
+          <form (ngSubmit)="onSubmit()" fxLayoutAlign="stretch" fxLayout="column">
+            <!-- ngSubmit é usado para chamar o método login() quando o formulário for submetido -->
+      
+            <mat-form-field>
+              <mat-label style="margin-bottom: 8px;">Username</mat-label>
+              <input matInput name="username" [(ngModel)]="userData.username" required>
+              <!-- O uso de ngModel e name é importante para a vinculação de dados do formulário -->
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label style="margin-bottom: 8px;">Email</mat-label>
+              <input matInput name="email" [(ngModel)]="userData.email" required>
+              <!-- O uso de ngModel e name é importante para a vinculação de dados do formulário -->
+            </mat-form-field>
+      
+            <mat-form-field>
+              <mat-label style="margin-bottom: 8px;">Introduzir password</mat-label>
+              <input matInput name="password" [type]="hide ? 'password' : 'text'" [(ngModel)]="userData.password" required>
+              <!-- O uso de ngModel e name é importante para a vinculação de dados do formulário -->
+              <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                      [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label style="margin-bottom: 8px;">Confirmar Password</mat-label>
+              <input matInput name="password" [type]="hide ? 'password' : 'text'" ngModel #password="ngModel" required>
+              <!-- O uso de ngModel e name é importante para a vinculação de dados do formulário -->
+              <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                      [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+
+            <h4>Role do Utilizador</h4>
+            <mat-form-field>
+              <mat-label>Seleciona uma opção</mat-label>
+              <mat-select [(value)]="selected">
+                <mat-option value="option1" [disabled]="role === 'docente'">Docente</mat-option>
+                <mat-option value="option2">Aluno</mat-option>
+              </mat-select>
+            </mat-form-field>
+      
+            <button mat-raised-button type="submit">Register</button>
+      
+            <br>
+          </form>
+        </mat-card>
+      </div>
+</div>

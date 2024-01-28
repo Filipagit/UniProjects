@@ -1,0 +1,17 @@
+---
+# Persistent Volume Claim for Laravel pod
+# nã é preciso isto mas fica o code na mesma
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: "{{ laravel_namespace }}"
+  name: laravel-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard
+  resources:
+    requests:
+      storage: 20Gi
+
+

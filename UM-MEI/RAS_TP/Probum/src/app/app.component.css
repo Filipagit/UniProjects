@@ -1,0 +1,42 @@
+.custom-button {
+  /* Reset default styles */
+  appearance: none;
+  background-color: transparent;
+  border: none; /* Add this line to remove the border */
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  outline: none;
+  padding: 0;
+  text-align: inherit;
+  text-decoration: none;
+  user-select: none;
+  
+
+  /* Your custom styles */ 
+  color: black;
+  padding: 10px 20px;
+  margin-left: auto;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.example-icon{
+  border:0;
+  display:flex;
+  margin-right:20px;
+  background-color: lightgray;
+  transition: background-color 1s;
+}
+
+.example-icon:hover{
+  background-color: grey;
+}
+
+.example-icon:active{
+  background-color: darkslategray;
+  transition: none;
+}

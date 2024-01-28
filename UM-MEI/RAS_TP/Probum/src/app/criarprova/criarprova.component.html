@@ -1,0 +1,55 @@
+<div>
+  <h2>Criação de Prova</h2>
+  <div>
+    <label for="nomeProva">Nome da Prova:</label>
+    <input type="text" id="nomeProva" (input)="onNomeChange($event)">
+  </div>
+  <div>
+    <label for="dataHoraProva">Data e Hora da Prova:</label>
+    <input type="datetime-local" id="dataHoraProva" (input)="onDateTimeChange($event)">
+  </div>
+
+  <button (click)="criarProva()">Criar Prova</button>
+
+  <div [style.display]="exibirCriarQuestao ? 'block' : 'none'">
+    <button (click)="exibirOpcoesQuestao()">Criar Questão</button>
+    <div [style.display]="exibirOpcoes ? 'block' : 'none'">
+      <label for="tipoQuestao">Tipo de Questão:</label>
+      <select id="tipoQuestao" (change)="onTipoQuestaoChange($event)">
+        <option value="escolhaMultipla">Escolha Múltipla</option>
+        <option value="aberta">Aberta</option>
+      </select>
+
+      <!-- Seção da questão de escolha múltipla -->
+      <div [style.display]="tipoQuestaoSelecionada === 'escolhaMultipla' ? 'block' : 'none'">
+        <h3>Questão de Escolha Múltipla</h3>
+        <div>
+          <label for="perguntaEscolhaMultipla">Pergunta:</label>
+          <input type="text" id="perguntaEscolhaMultipla">
+        </div>
+        <div>
+          <label for="opcao1">Opção 1:</label>
+          <input type="text" id="opcao1">
+        </div>
+        <div>
+          <label for="opcao2">Opção 2:</label>
+          <input type="text" id="opcao2">
+        </div>
+        
+        <button (click)="criarQuestao()">Criar Questão</button>
+      </div>
+    </div>
+
+    <!-- Seção da questão aberta -->
+    <div [style.display]="tipoQuestaoSelecionada === 'aberta' ? 'block' : 'none'">
+      <h3>Questão Aberta</h3>
+      <div>
+        <label for="perguntaAberta">Pergunta:</label>
+        <textarea id="perguntaAberta"></textarea>
+      </div>
+      <button (click)="criarQuestao()">Criar Questão</button>
+    </div>
+  </div>
+
+  <button (click)="guardarProva()">Guardar Prova</button>
+</div>

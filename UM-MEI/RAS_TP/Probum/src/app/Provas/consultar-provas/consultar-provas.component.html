@@ -1,0 +1,9 @@
+<div class="test-container">
+    <h1>PROVAS</h1>
+    <div *ngFor="let prova of provas" class="test-card">
+      <h2>{{ prova.nome }}</h2>
+      <p>UC: {{ prova.uc }}</p>
+      <p>Duracao: {{ prova.duracao }}</p>
+      <p>Criador: {{ prova.criador_id }}</p>
+    </div>
+  </div>

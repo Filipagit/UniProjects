@@ -1,0 +1,49 @@
+
+
+<h2>Lista de Salas</h2>
+
+<table id="customers">
+    <tr>
+      <th>Sala</th>
+      <th>Edificio</th>
+      <th>Piso</th>
+      <th>Capacidade</th>
+      <th>Eliminar?</th>
+    </tr>
+    <tr *ngFor="let sala of salas">
+      <td>{{ sala.sala }}</td>
+      <td>{{ sala.edificio }}</td>
+      <td>{{ sala.piso }}</td>
+      <td>{{ sala.capacidade }}</td>
+      <td>
+        <button (click)="eliminarSala(sala.id)">Eliminar Sala</button>
+      </td>
+    </tr>
+  </table>
+
+
+<h2>Adicionar Nova Sala</h2>
+
+<form (submit)="criarSala()">
+  <label>
+    Sala:
+    <input type="text" [(ngModel)]="novaSala.sala" name="sala" required>
+  </label>
+  <br>
+  <label>
+    Edifício:
+    <input type="text" [(ngModel)]="novaSala.edificio" name="edificio" required>
+  </label>
+  <br>
+  <label>
+    Piso:
+    <input type="text" [(ngModel)]="novaSala.piso" name="piso" required>
+  </label>
+  <br>
+  <label>
+    Capacidade:
+    <input type="number" [(ngModel)]="novaSala.capacidade" name="capacidade" required>
+  </label>
+  <br>
+  <button type="submit">Adicionar Sala</button>
+</form>

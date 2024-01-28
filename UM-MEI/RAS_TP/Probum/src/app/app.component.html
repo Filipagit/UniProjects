@@ -1,0 +1,132 @@
+<p>
+    <mat-toolbar style="height: 64px; background-color: lightgray;" *ngIf="role === 'docente'">
+      <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon" aria-label="Example icon-button with a menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="home()">
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </button>
+        <button mat-menu-item (click)="redirecionaPerfil()">
+          <mat-icon>face</mat-icon>
+          <span>Perfil</span>
+        </button>
+        <button mat-menu-item (click)="registar()">
+          <mat-icon>how_to_reg</mat-icon>
+          <span>Registar Aluno</span>
+        </button>
+        <button mat-menu-item (click)="criarProva()">
+          <mat-icon>add_circle</mat-icon>
+          <span>Criar Prova</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>preview</mat-icon>
+          <span>Provas</span>
+        </button>
+        <button mat-menu-item (click)="classificacoes()">
+          <mat-icon>star</mat-icon>
+          <span>Classificações</span>
+        </button>
+      </mat-menu>
+
+      <span class="example-spacer"></span>
+      <span>Docente</span>
+      <span style="display: block; text-align: center; width: 100%; cursor: pointer;" (click)="home()">Probum</span>
+      <span class="example-spacer"></span>
+      
+      <button mat-icon-button class="example-icon custom-button" aria-label="Example icon-button with share icon" (click)="logout()">
+        Logout
+      </button>
+
+      
+    </mat-toolbar>
+</p>
+
+
+<p>
+  <mat-toolbar style="height: 64px; background-color: lightgray;" *ngIf="role === 'estudante'">
+    <button mat-icon-button [matMenuTriggerFor]="menu_aluno" class="example-icon" aria-label="Example icon-button with a menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu_aluno="matMenu">
+      <button mat-menu-item (click)="home()">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-menu-item (click)="redirecionaPerfil()">
+        <mat-icon>face</mat-icon>
+        <span>Perfil</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>preview</mat-icon>
+        <span>Provas</span>
+      </button>
+      <button mat-menu-item (click)="classificacoes()">
+        <mat-icon>star</mat-icon>
+        <span>Classificações</span>
+      </button>
+    </mat-menu>
+
+
+
+    <span class="example-spacer"></span>
+    <span>Aluno</span>
+    <span style="display: block; text-align: center; width: 100%; cursor: pointer;" (click)="home()">Probum</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon custom-button" aria-label="Example icon-button with share icon" (click)="logout()">
+      Logout
+    </button>
+  </mat-toolbar>
+</p>
+
+
+<p>
+  <mat-toolbar style="height: 64px; background-color: lightgray;" *ngIf="role === 'admin'">
+    <button mat-icon-button [matMenuTriggerFor]="menu_tecnico" class="example-icon" aria-label="Example icon-button with a menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu_tecnico="matMenu">
+      <button mat-menu-item (click)="home()">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-menu-item (click)="redirecionaPerfil()">
+        <mat-icon>face</mat-icon>
+        <span>Perfil</span>
+      </button>
+      <button mat-menu-item (click)="registar()">
+        <mat-icon>how_to_reg</mat-icon>
+        <span>Registar Utilizador</span>
+      </button>
+      <button mat-menu-item (click)="salas()">
+        <mat-icon>dns</mat-icon>
+        <span>Gerir salas</span>
+      </button>
+
+      
+    </mat-menu>
+
+    <span class="example-spacer"></span>
+    <span>Tecnico</span>
+    <span style="display: block; text-align: center; width: 100%; cursor: pointer;" (click)="home()">Probum</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon custom-button" aria-label="Example icon-button with share icon" (click)="logout()">
+      Logout
+    </button>
+  </mat-toolbar>
+</p>
+
+<body >
+    <div>
+        <router-outlet></router-outlet>
+        <!-- Other content goes here -->
+    </div>
+    <footer style="background-color: white;">
+        <p style="background-color:white; display: flex; justify-content: center; align-items: center;">
+        Probum &#64;2023
+        </p>
+        <br>
+    </footer>
+</body>
+

@@ -1,0 +1,19 @@
+<div *ngIf="prova">
+    <h2>{{ prova.nome }}</h2>
+    <p>Data: {{ prova.data }}</p>
+    <p>Duração: {{ prova.duracao }} minutos</p>
+    <p>Resultado: {{ prova.resultado }}</p>
+  
+    <div *ngFor="let questao of prova.questoes">
+      <h4>{{ questao.pergunta }}</h4>
+      <p>Tag: {{ questao.tag }}</p>
+  
+      <ul>
+        <li *ngFor="let opcao of questao.opcoes">
+          {{ opcao.texto }} ({{ opcao.correta ? 'Correta' : 'Incorreta' }})
+        </li>
+      </ul>
+  
+      <p>Resposta: {{ questao.resposta[0]?.resposta_texto }}</p>
+    </div>
+  </div>

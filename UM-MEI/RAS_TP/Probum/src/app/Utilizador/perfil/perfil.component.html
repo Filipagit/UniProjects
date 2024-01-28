@@ -1,0 +1,14 @@
+<body>
+  <div class="centered-div">
+    <mat-card fxFlex="30" class="login-form">
+      <h1>Perfil de utilizador</h1>
+      <h2>Informações Pessoais</h2>
+      <p><strong>Username:</strong> {{ username }}</p>
+      <p><strong>Email:</strong> {{ email }}</p>
+      <p><strong>Role:</strong> {{ role }} </p>
+    
+    
+      <button class="botao-link" (click)="openChangePasswordDialog()">Mudar password</button>
+    </mat-card>
+  </div>
+</body>

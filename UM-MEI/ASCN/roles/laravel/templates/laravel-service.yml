@@ -1,0 +1,21 @@
+---
+# Service for exposing Laravel
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: "{{ laravel_namespace }}"
+  name:  laravel-service
+  labels:
+    app: laravel
+spec:
+  type: LoadBalancer
+  selector:
+    app: laravel
+  ports:
+    - protocol: TCP
+      targetPort: 8000
+      port: {{ app_port }}
+
+
+
+

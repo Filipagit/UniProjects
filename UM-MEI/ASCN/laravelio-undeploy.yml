@@ -1,0 +1,29 @@
+---
+# Playbook to undeploy laravel.io and its component
+# TO DO
+
+# por enquanto limpa os serviços e pods do cluster 
+#---------------------------------------------------------------------------------------------------------------------------
+
+- name: Call role to undeploy laravel.io and its components
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Delete Laravel Deployment
+      shell: kubectl --namespace {{ laravel_namespace }} delete deployment laravel-deployment
+      
+    - name: Delete Laravel Service
+      shell: kubectl --namespace {{ laravel_namespace }} delete svc laravel-service
+
+    #- name: Delete Laravel PVC
+    #  shell: kubectl --namespace {{ laravel_namespace }} delete pvc laravel-pv-claim
+
+    - name: Delete mySQL Deployment
+      shell: kubectl --namespace {{ db_namespace }} delete deployment mysql-deployment
+
+    - name: Delete mySQL Service
+      shell: kubectl --namespace {{ db_namespace }} delete svc mysql-service
+
+    - name: Delete mySQL PVC
+      shell: kubectl --namespace {{ db_namespace }} delete pvc mysql-pv-claim
+#---------------------------------------------------------------------------------------------------------------------------

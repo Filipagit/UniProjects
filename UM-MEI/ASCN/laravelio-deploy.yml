@@ -1,0 +1,16 @@
+---
+# Playbook to deploy laravel.io and its components
+# TO DO
+
+# NOVO CODE PARA TESTAR SO PARA VER O QUE DÁ
+#---------------------------------------------------------------------------------------------------------------------------
+
+- name: Call role to deploy laravel.io and its components
+  hosts: localhost
+  gather_facts: false
+  roles:
+      - db
+      - laravel     
+
+#---------------------------------------------------------------------------------------------------------------------------
+    

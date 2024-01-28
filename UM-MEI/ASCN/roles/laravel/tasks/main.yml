@@ -1,0 +1,135 @@
+# playbook que dá deploy ao laravel
+
+---
+
+# caso seja necessário instalar:
+#
+#- name: Instalar python3-pip
+#  #become: yes
+#  apt:
+#    name: python3-pip
+#    state: present
+#
+#- name: Instalar pre-requisitos
+#  pip:
+#    name:
+#      - openshift
+#      - pyyaml
+#      - kubernetes
+
+#-----------------------------------------------------------------------------------------
+# este pedaço serve apenas para garantir que o valor de port no gcp é 80 por default
+# (ou seja, evita que este campo esteja vazio no inicio da execução)
+#
+#- name: Remove existing app_port value
+#  ansible.builtin.replace:
+#    path: inventory/gcp.yml
+#    regexp: '  app_port:.*$'
+#    replace: '  app_port: '
+#
+#- name: Laravel service needs to have at least a port value to start. Let's make it 80
+#  ansible.builtin.replace:
+#    path: inventory/gcp.yml
+#    regexp: '  app_port:.*$'
+#    replace: '  app_port: 80'
+#
+#-----------------------------------------------------------------------------------------
+
+#Deploy Laravel App on Kubernetes
+- name: Imprimir mensagem
+  debug:
+      msg: "{{ laravel_namespace }}"
+
+- name: Create laravel namespace
+  kubernetes.core.k8s:
+    state: present
+    api_version: v1
+    name: "{{ laravel_namespace }}"
+    kind: Namespace
+
+# Não é necessário PVC para o laravel
+#- name: Claim pv
+#  kubernetes.core.k8s:
+#    state: present
+#    #src: roles/laravel/templates/laravel-pvc.yml
+#    definition: "{{ lookup('template', 'roles/laravel/templates/laravel-pvc.yml') | from_yaml }}"
+
+
+
+- name: Deploy laravel app
+  kubernetes.core.k8s:
+    state: present
+    #src: roles/laravel/templates/laravel-deployment.yml
+    definition: "{{ lookup('template', 'roles/laravel/templates/laravel-deployment.yml') | from_yaml }}"
+
+
+- name: Wait...
+  shell: sleep 10
+
+- name: Retrieve Laravel Pod Name
+  command: kubectl get pods -l app=laravel -o jsonpath='{.items[0].metadata.name}' --namespace {{ laravel_namespace }}
+  register: laravel_pod_name
+
+- name: Display Laravel Pod Name
+  debug:
+    var: laravel_pod_name.stdout
+
+- name: Wait...
+  shell: sleep 10
+
+- name: Start laravel service
+  kubernetes.core.k8s:
+    #src: roles/laravel/templates/laravel-service.yml
+    state: present
+    definition: "{{ lookup('template', 'roles/laravel/templates/laravel-service.yml') | from_yaml }}"
+
+
+- name: Get service ip and port
+  kubernetes.core.k8s_info:
+    kind: Service
+    name: laravel-service
+    namespace: "{{ laravel_namespace }}"
+  register: laravel_service
+  until: laravel_service.resources[0].status.loadBalancer.ingress is defined
+  retries: 5
+  delay: 10
+
+- name: Define laravel ip and port
+  set_fact:
+    app_ip: "{{ laravel_service.resources[0].status.loadBalancer.ingress[0].ip }}"
+    app_port: "{{ laravel_service.resources[0].spec.ports[0].port }}"
+    
+    
+- name: Remove existing app_ip value
+  ansible.builtin.replace:
+    path: inventory/gcp.yml
+    regexp: '  app_ip:.*$'
+    replace: '  app_ip: '
+
+- name: Remove existing app_port value
+  ansible.builtin.replace:
+    path: inventory/gcp.yml
+    regexp: '  app_port:.*$'
+    replace: '  app_port: '
+
+- name: Add new app_ip value
+  ansible.builtin.replace:
+    path: inventory/gcp.yml
+    regexp: '  app_ip:.*$'
+    replace: '  app_ip: {{ app_ip }}'
+
+- name: Add new app_port value
+  ansible.builtin.replace:
+    path: inventory/gcp.yml
+    regexp: '  app_port:.*$'
+    replace: '  app_port: {{ app_port }}'
+
+
+- name: Print laravel URL
+  debug:
+    msg: "Laravel url: http://{{ app_ip }}:{{ app_port }}"
+
+- name: wait for Laravel Service to start
+  shell: sleep 10
+
+

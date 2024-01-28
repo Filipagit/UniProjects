@@ -1,0 +1,38 @@
+---
+# Deployment for deploying Laravelio
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: "{{ laravel_namespace }}"
+  name: laravel-deployment
+  labels:
+    app: laravel
+spec:
+  selector:
+    matchLabels:
+      app: laravel
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: laravel
+        tier: app
+    spec:
+      containers:
+      - name: laravel
+        image: axcm19/ascn-grupo23-laravel
+        env: # The variables below could be set on a ConfigMap object
+        - name: url
+          value: http://{{ app_ip }}:{{ app_port }}
+        - name: DB_HOST
+          value: mysql-service.{{ db_namespace }}
+        - name: DB_DATABASE
+          value: {{ MYSQL_DATABASE }}
+        - name: DB_USERNAME
+          value: {{ MYSQL_USER }}
+        - name: DB_PASSWORD
+          value: "{{ MYSQL_PASSWORD }}"
+        #- name: MIGRATE
+        #  value: "true"
+        ports:
+        - containerPort: 8000

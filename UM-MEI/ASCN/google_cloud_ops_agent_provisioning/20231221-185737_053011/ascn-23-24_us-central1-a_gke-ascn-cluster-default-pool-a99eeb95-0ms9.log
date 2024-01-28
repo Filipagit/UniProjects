@@ -1,0 +1,222 @@
+Installing ops-agent
+WARNING: The private SSH key file for gcloud does not exist.
+WARNING: The public SSH key file for gcloud does not exist.
+WARNING: You do not have an SSH key for gcloud.
+WARNING: SSH keygen will be executed to generate a key.
+Generating public/private rsa key pair.
+Your identification has been saved in /home/afonso/.ssh/google_compute_engine
+Your public key has been saved in /home/afonso/.ssh/google_compute_engine.pub
+The key fingerprint is:
+SHA256:mnNPLocOLMg4l6FbjhJe8INDhdYjEzvFakDHHZRqqew afonso@afonso-VirtualBox
+The key's randomart image is:
++---[RSA 3072]----+
+|.o*oooo          |
+|.=+* o           |
+|oo= +            |
+| =.+             |
+|+ B     S        |
+|.O B . o         |
+|*.O o * ...      |
+|.E   . +o+.      |
+|+ .    ..oo      |
++----[SHA256]-----+
+Updating project ssh metadata...
+................................................Updated [https://www.googleapis.com/compute/v1/projects/ascn-23-24].
+..done.
+Waiting for SSH key to propagate.
+Warning: Permanently added 'compute.5346519432303338248' (ED25519) to the list of known hosts.
+##############################################################################
+# WARNING: Any changes on the boot disk of the node must be made via
+#          DaemonSet in order to preserve them across node (re)creations.
+#          Node will be (re)created during manual-upgrade, auto-upgrade,
+#          auto-repair or auto-scaling.
+#          See https://cloud.google.com/kubernetes-engine/docs/concepts/node-images#modifications
+#          for more information.
+##############################################################################
+##############################################################################
+# WARNING: Any changes on the boot disk of the node must be made via
+#          DaemonSet in order to preserve them across node (re)creations.
+#          Node will be (re)created during manual-upgrade, auto-upgrade,
+#          auto-repair or auto-scaling.
+#          See https://cloud.google.com/kubernetes-engine/docs/concepts/node-images#modifications
+#          for more information.
+##############################################################################
+2023-12-21T18:57:37,059659434+00:00 Starting running commands.
+/etc/google-fluentd is now copied over to /var/lib/google-cloud-ops-agent/saved_configs folder.
+cp: cannot stat '/etc/google-fluentd': No such file or directory
+cp: cannot stat '/etc/stackdriver': No such file or directory
+cp: cannot stat '/opt/stackdriver/collectd/etc'/etc/stackdriver /opt/stackdriver/collectd/etc is now copied over to /var/lib/google-cloud-ops-agent/saved_configs folder.
+: No such file or directory
+Get:1 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
+Get:2 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]
+Get:3 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-backports InRelease [109 kB]
+Get:4 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]
+Get:5 http://ppa.launchpad.net/cloud-images/gke-1.27/ubuntu jammy InRelease [20.9 kB]
+Get:6 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1395 kB]
+Get:7 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy/main Translation-en [510 kB]
+Get:8 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [129 kB]
+Get:9 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy/restricted Translation-en [18.6 kB]
+Get:10 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [14.1 MB]
+Get:11 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy/universe Translation-en [5652 kB]
+Get:12 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [217 kB]
+Get:13 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy/multiverse Translation-en [112 kB]
+Get:14 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [1263 kB]
+Get:15 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-updates/main Translation-en [260 kB]
+Get:16 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [1250 kB]
+Get:17 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-updates/restricted Translation-en [203 kB]
+Get:18 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1020 kB]
+Get:19 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-updates/universe Translation-en [226 kB]
+Get:20 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [41.6 kB]
+Get:21 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-updates/multiverse Translation-en [9768 B]
+Get:22 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [41.7 kB]
+Get:23 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-backports/main Translation-en [10.5 kB]
+Get:24 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [24.3 kB]
+Get:25 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-backports/universe Translation-en [16.5 kB]
+Get:26 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [1051 kB]
+Get:27 http://security.ubuntu.com/ubuntu jammy-security/main Translation-en [200 kB]
+Get:28 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [1226 kB]
+Get:29 http://security.ubuntu.com/ubuntu jammy-security/restricted Translation-en [200 kB]
+Get:30 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [823 kB]
+Get:31 http://security.ubuntu.com/ubuntu jammy-security/universe Translation-en [156 kB]
+Get:32 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [36.5 kB]
+Get:33 http://security.ubuntu.com/ubuntu jammy-security/multiverse Translation-en [7060 B]
+Get:34 http://ppa.launchpad.net/cloud-images/gke-1.27/ubuntu jammy/main amd64 Packages [3040 B]
+Get:35 http://ppa.launchpad.net/cloud-images/gke-1.27/ubuntu jammy/main Translation-en [2140 B]
+Fetched 30.8 MB in 6s (4865 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  apt-transport-https
+0 upgraded, 1 newly installed, 0 to remove and 111 not upgraded.
+Need to get 1510 B of archives.
+After this operation, 170 kB of additional disk space will be used.
+Get:1 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 apt-transport-https all 2.4.11 [1510 B]
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LC_TIME = "pt_PT.UTF-8",
+	LC_MONETARY = "pt_PT.UTF-8",
+	LC_ADDRESS = "pt_PT.UTF-8",
+	LC_TELEPHONE = "pt_PT.UTF-8",
+	LC_NAME = "pt_PT.UTF-8",
+	LC_MEASUREMENT = "pt_PT.UTF-8",
+	LC_IDENTIFICATION = "pt_PT.UTF-8",
+	LC_NUMERIC = "pt_PT.UTF-8",
+	LC_PAPER = "pt_PT.UTF-8",
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to a fallback locale ("C.UTF-8").
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 1510 B in 0s (60.9 kB/s)
+Selecting previously unselected package apt-transport-https.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 60471 files and directories currently installed.)
+Preparing to unpack .../apt-transport-https_2.4.11_all.deb ...
+Unpacking apt-transport-https (2.4.11) ...
+Setting up apt-transport-https (2.4.11) ...
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LC_TIME = "pt_PT.UTF-8",
+	LC_MONETARY = "pt_PT.UTF-8",
+	LC_ADDRESS = "pt_PT.UTF-8",
+	LC_TELEPHONE = "pt_PT.UTF-8",
+	LC_NAME = "pt_PT.UTF-8",
+	LC_MEASUREMENT = "pt_PT.UTF-8",
+	LC_IDENTIFICATION = "pt_PT.UTF-8",
+	LC_NUMERIC = "pt_PT.UTF-8",
+	LC_PAPER = "pt_PT.UTF-8",
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to a fallback locale ("C.UTF-8").
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+Adding agent repository for ubuntu.
+deb https://packages.cloud.google.com/apt google-cloud-ops-agent-jammy-all main
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+OK
+Hit:1 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-updates InRelease
+Hit:3 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Hit:4 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Get:5 https://packages.cloud.google.com/apt google-cloud-ops-agent-jammy-all InRelease [5094 B]
+Hit:6 http://ppa.launchpad.net/cloud-images/gke-1.27/ubuntu jammy InRelease
+Get:7 https://packages.cloud.google.com/apt google-cloud-ops-agent-jammy-all/main amd64 Packages [2633 B]
+Fetched 7727 B in 1s (7176 B/s)
+Reading package lists...
+W: https://packages.cloud.google.com/apt/dists/google-cloud-ops-agent-jammy-all/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  google-cloud-ops-agent
+0 upgraded, 1 newly installed, 0 to remove and 111 not upgraded.
+Need to get 102 MB of archives.
+After this operation, 410 MB of additional disk space will be used.
+Get:1 https://packages.cloud.google.com/apt google-cloud-ops-agent-jammy-all/main amd64 google-cloud-ops-agent amd64 2.45.0~ubuntu22.04 [102 MB]
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LC_TIME = "pt_PT.UTF-8",
+	LC_MONETARY = "pt_PT.UTF-8",
+	LC_ADDRESS = "pt_PT.UTF-8",
+	LC_TELEPHONE = "pt_PT.UTF-8",
+	LC_NAME = "pt_PT.UTF-8",
+	LC_MEASUREMENT = "pt_PT.UTF-8",
+	LC_IDENTIFICATION = "pt_PT.UTF-8",
+	LC_NUMERIC = "pt_PT.UTF-8",
+	LC_PAPER = "pt_PT.UTF-8",
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to a fallback locale ("C.UTF-8").
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 102 MB in 3s (35.9 MB/s)
+Selecting previously unselected package google-cloud-ops-agent.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 60475 files and directories currently installed.)
+Preparing to unpack .../google-cloud-ops-agent_2.45.0~ubuntu22.04_amd64.deb ...
+Unpacking google-cloud-ops-agent (2.45.0~ubuntu22.04) ...
+Setting up google-cloud-ops-agent (2.45.0~ubuntu22.04) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/google-cloud-ops-agent.service → /lib/systemd/system/google-cloud-ops-agent.service.
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LC_TIME = "pt_PT.UTF-8",
+	LC_MONETARY = "pt_PT.UTF-8",
+	LC_ADDRESS = "pt_PT.UTF-8",
+	LC_TELEPHONE = "pt_PT.UTF-8",
+	LC_NAME = "pt_PT.UTF-8",
+	LC_MEASUREMENT = "pt_PT.UTF-8",
+	LC_IDENTIFICATION = "pt_PT.UTF-8",
+	LC_NUMERIC = "pt_PT.UTF-8",
+	LC_PAPER = "pt_PT.UTF-8",
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to a fallback locale ("C.UTF-8").
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+google-cloud-ops-agent  installation succeeded.
+root       43813  2.4  2.5 1230756 50940 ?       Ssl  18:58   0:00 /opt/google-cloud-ops-agent/libexec/google_cloud_ops_agent_wrapper -config_path /etc/google-cloud-ops-agent/config.yaml -log_path /var/log/google-cloud-ops-agent/subagents/logging-module.log /opt/google-cloud-ops-agent/subagents/fluent-bit/bin/fluent-bit --config /run/google-cloud-ops-agent-fluent-bit/fluent_bit_main.conf --parser /run/google-cloud-ops-agent-fluent-bit/fluent_bit_parser.conf --storage_path /var/lib/google-cloud-ops-agent/fluent-bit/buffers
+root       43823  1.0  0.9 1187628 19552 ?       Sl   18:58   0:00 /opt/google-cloud-ops-agent/subagents/fluent-bit/bin/fluent-bit --config /run/google-cloud-ops-agent-fluent-bit/fluent_bit_main.conf --parser /run/google-cloud-ops-agent-fluent-bit/fluent_bit_parser.conf --storage_path /var/lib/google-cloud-ops-agent/fluent-bit/buffers
+google-cloud-ops-agent runs successfully.
+2023-12-21T18:57:37,062256554+00:00 Finished running commands.

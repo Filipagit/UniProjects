@@ -1,0 +1,27 @@
+.backgroundGoat{
+    background-image: url('../../assets/testeBackground.png');
+    background-size: cover; /* Adjust the background size as needed */
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: 0;
+    height: 100vh;
+    padding: 0px;
+    position: relative;
+}
+
+.centered-div{
+    margin: 0;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    height: 100vh;
+    padding: 0px;
+}
+
+.login-form{
+    min-height: 0px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}

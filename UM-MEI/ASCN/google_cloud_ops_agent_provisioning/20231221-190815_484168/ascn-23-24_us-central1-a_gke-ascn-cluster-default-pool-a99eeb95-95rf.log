@@ -1,0 +1,28 @@
+Installing ops-agent
+##############################################################################
+# WARNING: Any changes on the boot disk of the node must be made via
+#          DaemonSet in order to preserve them across node (re)creations.
+#          Node will be (re)created during manual-upgrade, auto-upgrade,
+#          auto-repair or auto-scaling.
+#          See https://cloud.google.com/kubernetes-engine/docs/concepts/node-images#modifications
+#          for more information.
+##############################################################################
+2023-12-21T19:08:15,491906541+00:00 Starting running commands.
+cp: cannot stat '/etc/google-fluentd': No such file or directory
+/etc/google-fluentd is now copied over to /var/lib/google-cloud-ops-agent/saved_configs folder.
+cp: /etc/stackdriver /opt/stackdriver/collectd/etc is now copied over to /var/lib/google-cloud-ops-agent/saved_configs folder.
+cannot stat '/etc/stackdriver': No such file or directory
+cp: cannot stat '/opt/stackdriver/collectd/etc': No such file or directory
+Hit:1 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-updates InRelease
+Hit:3 http://us-central1.gce.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Hit:4 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Hit:5 http://ppa.launchpad.net/cloud-images/gke-1.27/ubuntu jammy InRelease
+Hit:6 https://packages.cloud.google.com/apt google-cloud-ops-agent-jammy-all InRelease
+Reading package lists...
+W: https://packages.cloud.google.com/apt/dists/google-cloud-ops-agent-jammy-all/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+No changes made.
+root       46517  0.1  0.7 1304488 15752 ?       Ssl  19:02   0:00 /opt/google-cloud-ops-agent/libexec/google_cloud_ops_agent_wrapper -config_path /etc/google-cloud-ops-agent/config.yaml -log_path /var/log/google-cloud-ops-agent/subagents/logging-module.log /opt/google-cloud-ops-agent/subagents/fluent-bit/bin/fluent-bit --config /run/google-cloud-ops-agent-fluent-bit/fluent_bit_main.conf --parser /run/google-cloud-ops-agent-fluent-bit/fluent_bit_parser.conf --storage_path /var/lib/google-cloud-ops-agent/fluent-bit/buffers
+root       46538  0.1  0.8 1187628 16984 ?       Sl   19:02   0:00 /opt/google-cloud-ops-agent/subagents/fluent-bit/bin/fluent-bit --config /run/google-cloud-ops-agent-fluent-bit/fluent_bit_main.conf --parser /run/google-cloud-ops-agent-fluent-bit/fluent_bit_parser.conf --storage_path /var/lib/google-cloud-ops-agent/fluent-bit/buffers
+google-cloud-ops-agent runs successfully.
+2023-12-21T19:08:15,495030055+00:00 Finished running commands.

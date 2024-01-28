@@ -1,0 +1,38 @@
+---
+all:
+ vars:
+
+  # GKE cluster variables
+  gcp_project: ascn-23-24                                  # ID of GCP Project
+  gcp_auth_kind: serviceaccount                            # Do not change
+  gcp_cred_file: ascn-23-24-a077e0d3f802.json    # Path to service account keys (json file downloaded from GCP)
+
+  gcp_zone: us-central1-a
+  gcp_image_type: ubuntu_containerd
+  gcp_machine_type: e2-small          # Can be changed if necessary
+  gcp_disk_size_gb: 100                # Can be changed if necessary
+  gcp_initial_node_count: 2            # Number of nodes to create. Can be changed if necessary
+
+
+  # APP variables
+  app_ip: 34.172.183.50
+  app_port: 80
+
+  laravel_namespace: laravel
+  db_namespace: db
+
+# não sei se isto deve estar aqui!!! deve :D
+  # Additional variables
+  # DB variables
+  #laravel_db_name: laravel_db
+  #laravel_db_user: laravel_user_23
+  #laravel_db_password: "{{ db_password }}"  #Careful this should be using VAULT!!!!
+
+# Additional variables
+  DB_CONNECTION: mysql
+  DB_HOST: mysql-service 
+
+  MYSQL_USER: testing
+  MYSQL_PASSWORD: password
+  MYSQL_DATABASE: laravel
+  MYSQL_ALLOW_EMPTY_PASSWORD: true
