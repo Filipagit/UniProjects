@@ -1,0 +1,174 @@
+<?xml version="1.0" ?>
+<project name="Terrain generation" width="1024" height ="1024">
+	<assets>
+	
+		<attributes><!--VER QUAIS PODEMOS TIRAR DAQUI (maybe: min_h, lacunarity, gain, layers, fogColor, fog_density)-->
+			<attribute type="RENDERER" name="scale" data="FLOAT" value="1.00"/>
+			<attribute type="RENDERER" name="amplitude" data="FLOAT" value="0.887"/>
+			<attribute type="RENDERER" name="octaves" data="INT" value="7"/>
+			<attribute type="RENDERER" name="lacunarity" data="FLOAT" value="2.272"/>
+			<attribute type="RENDERER" name="gain" data="FLOAT" value="0.308"/>
+			<attribute type="RENDERER" name="frequency" data="FLOAT" value="0.699"/>
+			<attribute type="RENDERER" name="fog_density" data="FLOAT" value="0.0"/>
+			<attribute type="RENDERER" name="min_h" data="FLOAT" value="-0.069"/>
+			<attribute type="RENDERER" name="firstLayer" data="FLOAT" value="0.3"/>
+			<attribute type="RENDERER" name="secondLayer" data="FLOAT" value="0.6"/>
+			<attribute type="RENDERER" name="thirdLayer" data="FLOAT" value="0.9"/>
+			<attribute type="RENDERER" name="showWater" data="INT" value="1"/>
+			<attribute type="RENDERER" name="noiseSeed" data="FLOAT" value="23.19"/>
+			<attribute type="RENDERER" name="skyColorOrTex" data="INT" value="0"/>
+		</attributes>
+		
+		<scenes>
+			<scene name="terrain_scene" >
+				<geometry name = "GridTerrain" type = "GRID" LENGTH="30"  DIVISIONS="3000" material="terrain_mat">
+            		<SCALE x="1" y="1" z="1" />
+        		</geometry>
+			</scene>
+
+			<scene name="water_scene" >
+				<geometry name = "GridWater" type = "GRID" LENGTH="30"  DIVISIONS="4" material="water_mat"/>
+			</scene>
+
+			<scene name="sky_scene" >
+				<geometry name="skyBox" material="sky_mat" type="BOX" >
+                    <SCALE x="100" y="100" z="100"/>
+					<TRANSLATE x="200.0" y="0.0" z="0.0" />
+                </geometry>
+			</scene>
+			<scene name="sky_scene2" >
+				<geometry name="skyBox2" material="sky_mat" type="BOX" >
+                    <SCALE x="100" y="100" z="100"/>
+					<TRANSLATE x="0.0" y="200.0" z="0.0" />
+                </geometry>
+			</scene>
+			<scene name="sky_scene3" >
+				<geometry name="skyBox3" material="sky_mat" type="BOX" >
+                    <SCALE x="100" y="100" z="100"/>
+					<TRANSLATE x="0.0" y="0.0" z="200.0" />
+                </geometry>
+			</scene>
+
+			<scene name="sky_scene4" >
+				<geometry name="skyBox4" material="sky_mat" type="BOX" >
+                    <SCALE x="100" y="100" z="100"/>
+					<TRANSLATE x="-200.0" y="0.0" z="0.0" />
+                </geometry>
+			</scene>
+			<scene name="sky_scene5" >
+				<geometry name="skyBox5" material="sky_mat" type="BOX" >
+                    <SCALE x="100" y="100" z="100"/>
+					<TRANSLATE x="0.0" y="-200.0" z="0.0" />
+                </geometry>
+			</scene>
+			<scene name="sky_scene6" >
+				<geometry name="skyBox6" material="sky_mat" type="BOX" >
+                    <SCALE x="100" y="100" z="100"/>
+					<TRANSLATE x="0.0" y="0.0" z="-200.0" />
+                </geometry>
+			</scene>
+
+			
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
+			</viewport>
+		</viewports>
+		
+		<cameras>
+			<camera name="MainCamera" >
+				<viewport name="MainViewport" />
+				<projection TYPE="PERSPECTIVE" FOV="60.0" NEAR="0.3" FAR="200.0" />
+				<POSITION x="0" y="2.45" z="10" />
+				<VIEW x="0.289735" y="-0.389418" z="-0.874304" />
+				<UP x="0" y="1" z="0" />
+			</camera>
+		</cameras>
+		
+		<lights>
+			<light name="Sun" type="directional">
+				<DIRECTION x="22" y="30" z="0" />
+				<COLOR r="0.9" g="0.9" b="0.9" />
+				<AMBIENT r="0.3" g="0.3" b="0.3" />
+			</light>
+		</lights>
+		
+		<materialLibs>
+			<materialLib filename = "terraingen.mlib"/>
+		</materialLibs>
+	</assets>
+	
+
+	<pipelines>
+		<pipeline name="Terrain" default="true">
+			<pass class="default" name="pass1" axis="5">
+				<scenes>
+					<scene name="terrain_scene" />
+					<scene name="sky_scene" />
+					<scene name="sky_scene2" />
+					<scene name="sky_scene3" />
+					<scene name="sky_scene4" />
+					<scene name="sky_scene5" />
+					<scene name="sky_scene6" />
+					<scene name="water_scene"/>
+				</scenes>
+				<camera name="MainCamera" />
+				<viewport name="MainViewport" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<materialMaps>
+					<map fromMaterial="terrain_mat" toLibrary="Terrain" toMaterial="terrain_mat" />
+					<map fromMaterial="sky_mat" toLibrary="Terrain" toMaterial="sky_mat" />
+				</materialMaps>
+				<injectionMaps>
+					<map toMaterial="water_mat">
+						<shader fromMaterial="water_mat" fromLibrary="Terrain" />
+						<state name="transparent" fromLibrary="Terrain" />
+					</map>
+				</injectionMaps>
+			</pass>
+			
+		</pipeline>
+	</pipelines>
+
+	<interface>
+		<window label="Terrain Effects"> 
+			<var label="scale" type="RENDERER" context="CURRENT" 
+					component="scale" def="min=0.1 max=5 step=0.1" />
+
+			<var label="amplitude" type="RENDERER" context="CURRENT" 
+					component="amplitude" def="min=0.1 max=1 step=0.1" />
+
+			<var label="octaves" type="RENDERER" context="CURRENT" 
+					component="octaves" def="min=2 max=8 step=1" />
+										
+			<var label="min_h" type="RENDERER" context="CURRENT" 
+					component="min_h" def="min=-0.15 max=0.15 step=0.01" />
+
+			<var label="lacunarity" type="RENDERER" context="CURRENT" 
+					component="lacunarity" def="min=0.0 max=10.0 step=0.1" />
+
+			<var label="gain" type="RENDERER" context="CURRENT" 
+					component="gain" def="min='0.0' max=1.0 step=0.1" />
+
+			<var label="frequency" type="RENDERER" context="CURRENT" 
+					component="frequency" def="min=0.0 max=10.0 step=0.1" />
+			
+			<var label="noiseSeed" type="RENDERER" context="CURRENT" 
+					component="noiseSeed" def="min=1.0 max=50000.0 step=0.5" />
+			
+			<var label="showWater" type="RENDERER" context="CURRENT"
+				 component="showWater" def="min=0 max=1 step=1" />
+
+			<var label="skyColorOrTex" type="RENDERER" context="CURRENT"
+				 component="skyColorOrTex" def="min=0 max=1 step=1" />
+			
+			<var label="fog_density" type="RENDERER" context="CURRENT" 
+					component="fog_density" def="min=0 max=0.1 step=0.01" />
+		</window>
+
+	</interface>
+</project>

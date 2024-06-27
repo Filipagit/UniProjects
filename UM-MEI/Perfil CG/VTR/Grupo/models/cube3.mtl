@@ -1,0 +1,17 @@
+newmtl front
+	map_Kd ..\texturas\sky.jpg
+
+newmtl back
+	map_Kd ..\texturas\sky.jpg
+
+newmtl right
+	map_Kd ..\texturas\sky.jpg
+	
+newmtl top
+	map_Kd ..\texturas\sky.jpg
+	
+newmtl left
+	map_Kd ..\texturas\sky.jpg
+	
+newmtl bottom
+	map_Kd ..\texturas\sky.jpg
